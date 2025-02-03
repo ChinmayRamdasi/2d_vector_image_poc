@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+### POC Implementation for 2D raster image and vector shapes using Fabric JS  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Fabric.js: 
 
-## Available Scripts
+Best suited for handling both raster (image) and vector (shape) graphics on 	HTML5 canvas. 
+Provides extensive tools for creating, manipulating, and annotating images. 
+Supports interactive objects, allowing users to move, resize, and edit annotations. 
 
-In the project directory, you can run:
+## Fabric.js version:
+Fabric JS Latest Version – 6.5.4 can directly use the shapes that is already in 
+place for Fabric library (i.e. Canvas, Rect, Circle, Textbox, PencilBrush,Image) 
 
-### `npm start`
+Capabilities that are involved in this POC 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2D Image Upload
+1. Upload a jpg/Png file into the canvas. Able to Resize/Rotate/Crop the Image. 
+2. Editing a Text into a canvas.  
+3. Adding Filters with different visuals that will be reflected in an image 
+4. Able to download the edited image from canvas. 
+5. Added Free hand drawing (pencil brush) to point out in an image.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2D Vector Shapes (Rectangle, Circle)
+7. Use a rectangle shape that will be used to focus on specific areas of the floor plan. 
+8. Use a circle shape.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This library will be used explored further as per the requirements. 
