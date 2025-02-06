@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { useState } from 'react';
-import { Circle, Image, IText, Rect } from 'fabric';
+import { Circle, Image, IText, Rect, Text } from 'fabric';
 // import fabric from 'fabric';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../src/Toolbox.css'
@@ -23,6 +23,13 @@ const Toolbox = ({ canvas, currentFilter, setCurrentFilter }) => {
     const styles = {
         width: "auto"
     }
+
+    const styleInput = {
+        opacity: 0,
+        position: "absolute",
+        inset: 0,
+    }
+
     const [drawingMode, setDrawingMode] = useState(false);
 
     function fileHandler(e) {
@@ -90,28 +97,32 @@ const Toolbox = ({ canvas, currentFilter, setCurrentFilter }) => {
         canvas.isDrawingMode = !canvas.isDrawingMode;
         setDrawingMode(canvas.isDrawingMode);
     }
-    // function enableDrawing() {
-    //     canvas.isDrawingMode = !canvas.isDrawingMode; // Toggle drawing mode
-
-    //     if (canvas.isDrawingMode) {
-    //         if (!canvas.freeDrawingBrush) {
-    //             canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-    //         }
-    //         canvas.freeDrawingBrush.color = "blue";
-    //         canvas.freeDrawingBrush.width = 3;
-    //     }
-    // }
 
     function clearCanvasObjects() {
         canvas.getObjects().forEach(obj => canvas.remove(obj));
         canvas.renderAll();
     }
 
+    const addFireIcon = () => {
+        //const canvas = canvasRef.current.fabric;
+
+        const fireIcon = new Text("🧯", {
+            left: 100,
+            top: 100,
+            fontSize: 50,
+            selectable: true,
+        });
+
+        canvas.add(fireIcon);
+    };
+
+
     return (
         <div className="toolbox">
             <button title="Add image">
                 <FontAwesomeIcon icon="image" />
                 <input
+                    style={styleInput}
                     type="file"
                     accept=".png, .jpg, .jpeg"
                     onChange={fileHandler} />
@@ -142,6 +153,9 @@ const Toolbox = ({ canvas, currentFilter, setCurrentFilter }) => {
             {/* <button onClick={enableDrawing}>Enable Drawing</button> */}
             <button title="Drawing mode" onClick={toggleDrawingMode} className={drawingMode ? 'active' : ''}>
                 <FontAwesomeIcon icon="pencil" />
+            </button>
+            <button style={styles} onClick={addFireIcon}>
+                Add fire extinguisher
             </button>
             <button style={styles} title="Rectangle" onClick={addRectangle}>
                 Add Rectangle Shape
