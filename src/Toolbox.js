@@ -116,6 +116,70 @@ const Toolbox = ({ canvas, currentFilter, setCurrentFilter }) => {
         canvas.add(fireIcon);
     };
 
+    function saveCanvasState() {
+        const json = JSON.stringify(canvas.toJSON()); // Convert canvas to JSON string
+        localStorage.setItem("canvasState", json); // Save JSON in LocalStorage
+        alert("Canvas state saved!");
+    }
+
+    // function loadCanvasState(imageUrl) {
+    //     const savedJson = localStorage.getItem("canvasState");
+
+    //     if (savedJson) {
+    //         Image.fromURL(imageUrl, function (img) {
+    //             img.set({
+    //                 left: 0,
+    //                 top: 0,
+    //                 selectable: false, // Prevent selecting the image
+    //                 evented: false, // Prevent dragging the image
+    //             });
+
+    //             // Set the image as background
+    //             canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+    //             // Load saved annotations AFTER the image is set
+    //             canvas.loadFromJSON(savedJson, function () {
+    //                 canvas.renderAll();
+    //                 alert("Canvas loaded! You can edit the annotations now.");
+    //             });
+    //         });
+    //     } else {
+    //         alert("No saved canvas state found in LocalStorage.");
+    //     }
+    // }
+    function loadCanvasState(imageUrl) {
+        const savedJson = localStorage.getItem("canvasState");
+
+        if (savedJson) {
+            Image.fromURL(imageUrl, function (img) {
+                img.set({
+                    left: 0,
+                    top: 0,
+                    selectable: false, // Prevent selecting the image
+                    evented: false, // Prevent dragging the image
+                });
+
+                // Set the image as background
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+                // Load saved annotations AFTER the image is set
+                canvas.loadFromJSON(savedJson, function () {
+                    canvas.renderAll();
+                    alert("Canvas loaded! You can edit the annotations now.");
+                });
+            });
+        } else {
+            alert("No saved canvas state found in LocalStorage.");
+        }
+    }
+
+    function updateCanvasState() {
+        const json = JSON.stringify(canvas.toJSON());
+        localStorage.setItem("canvasState", json);
+        alert("Canvas updated and saved!");
+    }
+
+
 
     return (
         <div className="toolbox">
@@ -162,7 +226,18 @@ const Toolbox = ({ canvas, currentFilter, setCurrentFilter }) => {
             </button>
             <button style={styles} title="Add Circle" onClick={addCircle}>Add Circle</button>
             <button style={styles} title="Clear Canvas" onClick={clearCanvasObjects}>Clear Canvas</button>
+            <button style={styles} title="Save Canvas" onClick={saveCanvasState}>Save Annotations</button>
+            <button style={styles} title="Load Canvas">Load Canvas
+                <FontAwesomeIcon icon="image" />
+                <input
+                    style={styleInput}
+                    type="file"
+                    id="imageInput"
+                    accept=".png, .jpg, .jpeg"
+                    onChange={loadCanvasState} />
 
+            </button>
+            <button style={styles} title="Update Canvas" onClick={updateCanvasState}>Update Canvas</button>
         </div>
     );
 };
